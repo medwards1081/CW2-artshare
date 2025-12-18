@@ -1,10 +1,13 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-upload-form',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './upload-form.component.html',
-  styleUrl: './upload-form.component.scss'
+  styleUrls: ['./upload-form.component.scss']
 })
 export class UploadFormComponent {
 

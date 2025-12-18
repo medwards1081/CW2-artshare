@@ -1,0 +1,17 @@
+nav {
+  display: flex;
+  gap: 1rem;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: #0078d4;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+button.active {
+  background-color: #005a9e;
+}

@@ -1,10 +1,14 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-artwork-list',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './artwork-list.component.html',
-  styleUrl: './artwork-list.component.scss'
+  styleUrls: ['./artwork-list.component.scss']
+
 })
 export class ArtworkListComponent {
 
