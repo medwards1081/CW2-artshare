@@ -3,6 +3,7 @@ import { CanActivateFn, Router } from '@angular/router';
 import { AuthService } from './auth.service';
 
 // Guard for normal authenticated users
+/*
 export const authGuard: CanActivateFn = () => {
   const auth = inject(AuthService);
   const router = inject(Router);
@@ -14,8 +15,10 @@ export const authGuard: CanActivateFn = () => {
   router.navigate(['/login']);
   return false;
 };
+*/
 
 // Guard for admin-only routes
+/*
 export const adminGuard: CanActivateFn = () => {
   const auth = inject(AuthService);
   const router = inject(Router);
@@ -27,3 +30,4 @@ export const adminGuard: CanActivateFn = () => {
   router.navigate(['/login']);
   return false;
 };
+*/
