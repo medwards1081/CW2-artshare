@@ -1,0 +1,27 @@
+.signup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  background: #f9f9f9;
+}
+
+.signup-card {
+  width: 400px;
+  padding: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.login-link {
+  font-size: 0.9rem;
+  color: #1976d2;
+  text-decoration: none;
+}
+.login-link:hover {
+  text-decoration: underline;
+}
