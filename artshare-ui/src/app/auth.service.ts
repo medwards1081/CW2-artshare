@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { MsalService } from '@azure/msal-angular';
+import { AuthenticationResult } from '@azure/msal-browser';
 
 export type UserRole = 'user' | 'admin';
 
@@ -23,31 +25,53 @@ export class AuthService {
     return this.state$.value;
   }
 
-  login(email: string, password: string): boolean {
-    const isAdmin = email.endsWith('@admin.com');
-    const ok = password.length >= 6;
+  constructor(private msal: MsalService) {}
 
-    if (ok) {
+  async login(): Promise<void> {
+    try {
+      const result: AuthenticationResult = await this.msal.instance.loginPopup({
+        scopes: ['openid', 'profile', 'email']
+      });
+
+      const account = result.account;
       this.state$.next({
         isAuthenticated: true,
-        email,
-        role: isAdmin ? 'admin' : 'user',
-        token: 'mock-token-' + Math.random().toString(36).slice(2)
+        email: account?.username ?? null,
+        role: this.extractRole(result.idTokenClaims),
+        token: result.accessToken
       });
+    } catch (err) {
+      console.error('Login failed', err);
     }
-    return ok;
   }
 
-  signup(email: string, password: string, dob: string): boolean {
-    return password.length >= 6;
+  async signup(): Promise<void> {
+    // In Entra ID B2C, signup is handled via a "user flow"
+    try {
+      await this.msal.instance.loginPopup({
+        scopes: ['openid', 'profile', 'email'],
+        authority: 'https://YOUR_TENANT.b2clogin.com/YOUR_TENANT.onmicrosoft.com/B2C_1_signup'
+      });
+    } catch (err) {
+      console.error('Signup failed', err);
+    }
   }
 
-  logout() {
+  logout(): void {
+    this.msal.instance.logoutPopup();
     this.state$.next({
       isAuthenticated: false,
       email: null,
       role: null,
       token: null
     });
+  }
+
+  private extractRole(claims: any): UserRole | null {
+    // Example: check custom claim or group membership
+    if (claims?.roles?.includes('admin')) {
+      return 'admin';
+    }
+    return 'user';
   }
 }
