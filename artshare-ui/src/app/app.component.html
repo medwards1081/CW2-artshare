@@ -1,7 +1,10 @@
-<nav>
-  <button type="button" routerLink="/artworks" routerLinkActive="active">Artworks</button>
-  <button type="button" routerLink="/upload" routerLinkActive="active">Upload</button>
-  <button type="button" routerLink="/admin" routerLinkActive="active">Admin</button>
+<nav class="navbar">
+  <div class="logo">ArtShare</div>
+  <div class="nav-links">
+    <a routerLink="/artworks" routerLinkActive="active" class="nav-btn">Artworks</a>
+    <a routerLink="/upload" routerLinkActive="active" class="nav-btn">Upload</a>
+    <a routerLink="/admin" routerLinkActive="active" class="nav-btn">Admin</a>
+  </div>
 </nav>
 
 <router-outlet></router-outlet>

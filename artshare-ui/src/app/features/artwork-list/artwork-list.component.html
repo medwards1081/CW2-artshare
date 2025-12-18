@@ -2,33 +2,42 @@
   <h1>Welcome to ArtShare</h1>
   <p>Discover, upload, and share amazing artwork with the community.</p>
   <div class="cta-buttons">
-    <button type="button" routerLink="/upload" routerLinkActive="active" class="primary-btn">
+    <a routerLink="/upload" routerLinkActive="active" class="primary-btn">
       Upload Your Artwork
-    </button>
-    <button type="button" routerLink="/admin" routerLinkActive="active" class="secondary-btn">
+    </a>
+    <a routerLink="/admin" routerLinkActive="active" class="secondary-btn">
       Go to Admin Dashboard
-    </button>
+    </a>
   </div>
 </section>
 
 <section class="artworks-grid">
   <h2>Featured Artworks</h2>
-  <div class="grid">
-    <div class="artwork-card">
-      <img src="assets/sample1.jpg" alt="Artwork 1">
-      <p>Artwork Title 1</p>
-    </div>
-    <div class="artwork-card">
-      <img src="assets/sample2.jpg" alt="Artwork 2">
-      <p>Artwork Title 2</p>
-    </div>
-    <div class="artwork-card">
-      <img src="assets/sample3.jpg" alt="Artwork 3">
-      <p>Artwork Title 3</p>
-    </div>
-    <div class="artwork-card">
-      <img src="assets/sample4.jpg" alt="Artwork 4">
-      <p>Artwork Title 4</p>
+  <div class="masonry-grid">
+    <!-- Loop through only the 6 displayed artworks -->
+    <div class="artwork-card" *ngFor="let artwork of displayedArtworks; let i = index"
+         [ngClass]="{ 'tall': i % 3 === 1, 'wide': i % 3 === 2 }">
+      <img [src]="artwork.image" [alt]="artwork.title">
+      <p>{{ artwork.title }}</p>
     </div>
   </div>
+</section>
+
+<section class="signup-section">
+  <h2>Sign up to share your art!</h2>
+  <form>
+    <div class="form-group">
+      <label for="email">Email Address:</label>
+      <input id="email" type="email" placeholder="Enter your email">
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input id="password" type="password" placeholder="Enter your password">
+    </div>
+    <div class="form-group">
+      <label for="dob">Date of Birth:</label>
+      <input id="dob" type="date">
+    </div>
+    <button type="submit" class="primary-btn">Sign Up</button>
+  </form>
 </section>
