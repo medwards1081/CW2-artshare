@@ -1,6 +1,9 @@
 .hero {
+  background: linear-gradient(135deg, #0078d4, #005a9e);
+  color: white;
   text-align: center;
-  margin: 2rem 0;
+  padding: 3rem 1rem;
+  border-radius: 8px;
 
   h1 {
     font-size: 2.5rem;
@@ -9,26 +12,41 @@
 
   p {
     font-size: 1.2rem;
-    color: #555;
+    margin-bottom: 1rem;
   }
 
   .cta-buttons {
     margin-top: 1rem;
+  }
+}
 
-    button {
-      margin: 0 0.5rem;
-      padding: 0.6rem 1.2rem;
-      border: none;
-      background-color: #0078d4;
-      color: white;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: background-color 0.2s ease;
+.primary-btn {
+  background-color: #0078d4;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
 
-      &:hover {
-        background-color: #005a9e;
-      }
-    }
+  &:hover {
+    background-color: #005a9e;
+  }
+}
+
+.secondary-btn {
+  background-color: #f3f3f3;
+  color: #333;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 1rem;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: #ddd;
   }
 }
 
@@ -41,15 +59,26 @@
 
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1rem;
   }
 
   .artwork-card {
-    background-color: #f3f3f3;
+    background-color: #fff;
     padding: 1rem;
     text-align: center;
     border-radius: 6px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+    img {
+      max-width: 100%;
+      border-radius: 4px;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-weight: 500;
+      color: #333;
+    }
   }
 }
