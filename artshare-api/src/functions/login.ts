@@ -31,11 +31,17 @@ export async function login(request: HttpRequest, context: InvocationContext): P
             return { status: 401, jsonBody: { error: "Invalid email or password" } };
         }
 
-        // ✅ Generate JWT
+        // ✅ Ensure new profile fields exist
+        if (!user.username) user.username = user.email.split("@")[0];
+        if (!user.profileImageUrl) user.profileImageUrl = "";
+
+        // ✅ Generate JWT with profile fields included
         const token = generateToken({
             userId: user.id,
             email: user.email,
-            role: user.role
+            role: user.role,
+            username: user.username,
+            profileImageUrl: user.profileImageUrl
         });
 
         return {
@@ -44,8 +50,12 @@ export async function login(request: HttpRequest, context: InvocationContext): P
                 message: "Login successful",
                 token,
                 user: {
+                    id: user.id,
                     email: user.email,
-                    role: user.role
+                    role: user.role,
+                    username: user.username,
+                    profileImageUrl: user.profileImageUrl,
+                    createdAt: user.createdAt
                 }
             }
         };
