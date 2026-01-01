@@ -1,0 +1,5 @@
+When starting the backend:
+
+Remove-Item -Recurse -Force dist
+npm run build
+func start

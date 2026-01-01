@@ -1,0 +1,46 @@
+<div class="edit-container">
+
+  <h2>Edit Profile</h2>
+
+  <div class="profile-section">
+
+    <div class="avatar-wrapper">
+
+      <!-- Show real preview image if available -->
+      <img 
+        *ngIf="previewUrl"
+        [src]="previewUrl"
+        alt="Profile Picture"
+        class="avatar"
+      />
+
+      <!-- Fallback: color-based avatar -->
+      <div 
+        *ngIf="!previewUrl"
+        class="avatar-fallback"
+        [style.background]="getAvatarColor(profile.username || 'U')"
+      >
+        {{ (profile.username || 'U').charAt(0).toUpperCase() }}
+      </div>
+
+      <label class="upload-btn">
+        Change Picture
+        <input type="file" accept="image/*" (change)="onFileSelected($event)" />
+      </label>
+    </div>
+
+    <div class="form-section">
+      <label>Display Name</label>
+      <input 
+        type="text" 
+        [(ngModel)]="profile.username" 
+        name="username"
+        placeholder="Enter your display name"
+      />
+
+      <button class="save-btn" (click)="saveChanges()">Save Changes</button>
+    </div>
+
+  </div>
+
+</div>

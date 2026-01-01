@@ -1,0 +1,185 @@
+<div class="detail-container" *ngIf="artwork">
+
+  <button class="back-btn" routerLink="/artwork">← Back to Gallery</button>
+
+  <div class="detail-content">
+
+    <div class="image-section">
+
+      <!-- IMAGE -->
+      <img
+        *ngIf="artwork.fileType && artwork.fileType.startsWith('image/')"
+        [src]="artwork.fileUrl"
+        [alt]="artwork.title"
+      />
+
+      <!-- AUDIO -->
+      <div 
+        *ngIf="artwork.fileType && artwork.fileType.startsWith('audio/')" 
+        class="audio-only"
+      >
+        <audio [src]="artwork.fileUrl" controls></audio>
+      </div>
+
+      <!-- VIDEO -->
+      <video
+        *ngIf="artwork.fileType && artwork.fileType.startsWith('video/')"
+        [src]="artwork.fileUrl"
+        controls
+      ></video>
+
+      <!-- OTHER FILE TYPES -->
+      <div
+        *ngIf="artwork.fileType 
+            && !artwork.fileType.startsWith('image/')
+            && !artwork.fileType.startsWith('audio/')
+            && !artwork.fileType.startsWith('video/')"
+        class="file-preview"
+      >
+        <p>{{ artwork.fileName }}</p>
+        <a [href]="artwork.fileUrl" target="_blank" class="download-btn">
+          Download File
+        </a>
+      </div>
+
+    </div>
+
+    <div class="info-section">
+      <h1 class="title">{{ artwork.title }}</h1>
+
+      <!-- ⭐ DELETE BUTTON (Admin OR Owner) -->
+      <div class="admin-controls" *ngIf="canDelete">
+        <button class="admin-delete-btn" (click)="deleteArtwork()">Delete</button>
+      </div>
+
+      <p class="artist">
+        <strong>Artist:</strong>
+        <a 
+          [routerLink]="['/user', artwork.artistId]" 
+          class="artist-link"
+        >
+          {{ artwork.artistUsername || 'Unknown Artist' }}
+        </a>
+      </p>
+
+      <p class="description">
+        {{ artwork.description }}
+      </p>
+
+      <!-- LIKE BUTTON + COUNT -->
+      <div class="likes-section">
+        <button class="like-btn" (click)="toggleLike()">
+          <span *ngIf="likedByUser">❤️ Unlike</span>
+          <span *ngIf="!likedByUser">🤍 Like</span>
+        </button>
+
+        <p class="likes-count">{{ likesCount }} likes</p>
+      </div>
+
+      <div class="meta">
+        <p><strong>Uploaded:</strong> {{ artwork.createdAt | date:'medium' }}</p>
+        <p><strong>ID:</strong> {{ artwork.id }}</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- COMMENTS SECTION -->
+  <div class="comments-container">
+
+    <h2 class="comments-title">Comments</h2>
+
+    <!-- Tabs -->
+    <div class="comments-tabs">
+      <button 
+        class="tab-btn" 
+        [class.active]="!showMyComments"
+        (click)="toggleCommentsView(false)">
+        All Comments ({{ comments.length }})
+      </button>
+
+      <button 
+        class="tab-btn" 
+        [class.active]="showMyComments"
+        (click)="toggleCommentsView(true)"
+        [disabled]="!isLoggedIn">
+        My Comments ({{ myComments.length }})
+      </button>
+    </div>
+
+    <!-- Add / Edit Comment -->
+    <div class="comment-editor" *ngIf="isLoggedIn">
+      <textarea 
+        [(ngModel)]="newCommentText"
+        placeholder="Write a comment..."
+        rows="3">
+      </textarea>
+
+      <div class="editor-actions">
+        <button 
+          class="submit-btn"
+          (click)="addOrSaveComment()"
+          [disabled]="!newCommentText.trim()">
+          {{ editingCommentId ? 'Save Changes' : 'Post Comment' }}
+        </button>
+
+        <button 
+          *ngIf="editingCommentId"
+          class="cancel-btn"
+          (click)="cancelEdit()">
+          Cancel
+        </button>
+      </div>
+    </div>
+
+    <p *ngIf="!isLoggedIn" class="login-hint">
+      Log in to add and manage your comments.
+    </p>
+
+    <!-- Loading -->
+    <p *ngIf="isLoadingComments" class="loading">Loading comments...</p>
+
+    <!-- No comments -->
+    <p 
+      *ngIf="!isLoadingComments && visibleComments.length === 0" 
+      class="no-comments">
+      No comments yet.
+    </p>
+
+    <!-- Comment List -->
+    <ul class="comment-list" *ngIf="!isLoadingComments && visibleComments.length > 0">
+      <li *ngFor="let comment of visibleComments" class="comment-item">
+
+        <div class="comment-avatar">
+          <img 
+            [src]="comment.profileImageUrl || 'assets/default-pfp.png'"
+            alt="User profile picture"
+          />
+        </div>
+
+        <div class="comment-body">
+
+          <div class="comment-header">
+            <span class="comment-author">{{ comment.username }}</span>
+            <span class="comment-date">
+              {{ comment.createdAt | date:'short' }}
+              <span *ngIf="comment.updatedAt !== comment.createdAt">• edited</span>
+            </span>
+          </div>
+
+          <p class="comment-text">{{ comment.text }}</p>
+
+          <!-- ⭐ COMMENT ACTIONS (Owner OR Admin) -->
+          <div class="comment-actions" *ngIf="comment.userEmail === userEmail || isAdmin">
+            <button class="edit-btn" (click)="startEditComment(comment)">Edit</button>
+            <button class="delete-btn" (click)="deleteComment(comment)">Delete</button>
+          </div>
+
+        </div>
+
+      </li>
+    </ul>
+
+  </div>
+
+</div>

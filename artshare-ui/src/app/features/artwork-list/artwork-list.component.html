@@ -1,0 +1,86 @@
+<section class="hero">
+  <h1>Welcome to ArtShare</h1>
+  <p>Discover, upload, and share amazing artwork with the community.</p>
+  <div class="cta-buttons">
+    <a routerLink="/upload" routerLinkActive="active" class="primary-btn">
+      Upload Your Artwork
+    </a>
+    <a routerLink="/admin" routerLinkActive="active" class="secondary-btn">
+      Go to Admin Dashboard
+    </a>
+  </div>
+</section>
+
+<section class="artworks-grid">
+  <h2>Featured Artworks</h2>
+  <div class="masonry-grid">
+    <!-- Loop through only the 6 displayed artworks with trackBy -->
+    <div class="artwork-card"
+         *ngFor="let artwork of displayedArtworks; let i = index; trackBy: trackByFn"
+         [ngClass]="{ 'tall': i % 3 === 1, 'wide': i % 3 === 2 }">
+      <img [src]="artwork.image" [alt]="artwork.title">
+      <!-- Removed the <p> banner entirely -->
+    </div>
+  </div>
+</section>
+
+
+<section class="signup-section">
+  <div class="signup-card">
+
+    <h2>Join ArtShare Today</h2>
+    <p class="signup-subtitle">
+      Create your free account to upload, showcase, and connect with fellow artists.
+    </p>
+
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+
+      <!-- Email -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" type="email" required />
+        <mat-error *ngIf="signupForm.get('email')?.invalid">
+          Please enter a valid email
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Username -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="username" type="text" required />
+        <mat-error *ngIf="signupForm.get('username')?.invalid">
+          Please enter a username
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Password -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password" type="password" required />
+      </mat-form-field>
+
+      <!-- Confirm Password -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Confirm Password</mat-label>
+        <input matInput formControlName="confirmPassword" type="password" required />
+      </mat-form-field>
+
+      <!-- Date of Birth -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Date of Birth</mat-label>
+        <input matInput formControlName="dob" type="date" required />
+      </mat-form-field>
+
+      <!-- Submit -->
+      <button mat-raised-button color="primary" class="full-width">
+        Sign Up
+      </button>
+
+      <p class="signup-footer">
+        Already have an account?
+        <a routerLink="/login">Log in here</a>
+      </p>
+
+    </form>
+  </div>
+</section>

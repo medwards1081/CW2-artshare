@@ -1,0 +1,53 @@
+<div class="gallery-container">
+  <h2 class="gallery-title">Artwork Gallery</h2>
+
+  <div class="gallery-grid">
+    <div 
+      class="art-card" 
+      *ngFor="let art of artworks; trackBy: trackByFn"
+      (click)="openDetail(art.id)"
+    >
+      <div class="image-wrapper">
+
+        <!-- IMAGE -->
+        <img
+          *ngIf="art.fileType && art.fileType.startsWith('image/')"
+          [src]="art.fileUrl"
+          [alt]="art.title"
+        />
+
+        <!-- VIDEO -->
+        <video
+          *ngIf="art.fileType && art.fileType.startsWith('video/')"
+          [src]="art.fileUrl"
+          muted
+        ></video>
+
+        <!-- AUDIO (big MP3 placeholder) -->
+        <div 
+          *ngIf="art.fileType && art.fileType.startsWith('audio/')" 
+          class="audio-placeholder"
+        >
+          MP3
+        </div>
+
+        <!-- OTHER FILE TYPES (generic FILE placeholder) -->
+        <div
+          *ngIf="art.fileType 
+              && !art.fileType.startsWith('image/')
+              && !art.fileType.startsWith('video/')
+              && !art.fileType.startsWith('audio/')"
+          class="file-placeholder"
+        >
+          FILE
+        </div>
+
+      </div>
+
+      <div class="art-info">
+        <h3 class="art-title">{{ art.title }}</h3>
+        <p class="art-artist">{{ art.artistUsername || 'Unknown Artist' }}</p>
+      </div>
+    </div>
+  </div>
+</div>

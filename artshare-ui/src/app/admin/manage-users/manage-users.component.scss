@@ -1,0 +1,102 @@
+:host {
+  display: block;
+  padding: 40px;
+}
+
+/* Page Title */
+h1 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #222;
+}
+
+/* Table Container */
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* Table Header */
+.user-table th {
+  background: #f3f3f3;
+  padding: 14px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 15px;
+  color: #444;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* Table Rows */
+.user-table td {
+  padding: 14px;
+  font-size: 15px;
+  color: #333;
+  border-bottom: 1px solid #eee;
+}
+
+/* Last row no border */
+.user-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Role Dropdown */
+select {
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: #fafafa;
+  font-size: 14px;
+  transition: border-color 0.2s ease;
+
+  &:focus {
+    outline: none;
+    border-color: #333;
+  }
+}
+
+/* Action Buttons */
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s ease;
+}
+
+/* Save Button */
+button:first-child {
+  background: #333;
+  color: white;
+
+  &:hover {
+    background: #000;
+  }
+}
+
+/* Delete Button */
+.delete-btn {
+  background: #c62828;
+  color: white;
+
+  &:hover {
+    background: #8e0000;
+  }
+}
+
+/* Loading Text */
+p {
+  font-size: 16px;
+  color: #666;
+}

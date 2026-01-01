@@ -1,0 +1,241 @@
+/* ============================
+   GLOBAL RESET + BASE STYLES
+============================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+}
+
+body {
+  background: #f8f9fb;
+  color: #222;
+}
+
+/* ============================
+   NAVBAR
+============================ */
+.navbar {
+  width: 100%;
+  height: 70px;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #5b5fef; /* Purply-blue */
+  letter-spacing: 0.5px;
+}
+
+/* ============================
+   SEARCH BAR (NEW)
+============================ */
+.search-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  margin: 0 2rem;
+}
+
+app-search-bar {
+  width: 100%;
+  max-width: 450px;
+}
+
+/* Style inside the search bar component */
+app-search-bar .search-bar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+app-search-bar input {
+  width: 100%;
+  padding: 0.55rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px 0 0 6px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+app-search-bar input:focus {
+  border-color: #5b5fef;
+}
+
+app-search-bar button {
+  padding: 0.55rem 1rem;
+  background: #5b5fef;
+  color: white;
+  border: none;
+  border-radius: 0 6px 6px 0;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background 0.2s ease;
+}
+
+app-search-bar button:hover {
+  background: #4a4ed1;
+}
+
+/* ============================
+   NAV LINKS
+============================ */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.nav-btn {
+  text-decoration: none;
+  padding: 0.45rem 1rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #333;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+}
+
+.nav-btn:hover {
+  background: #eef0ff; /* Light purply-blue */
+  color: #4a4ed1;      /* Darker purply-blue */
+}
+
+.active {
+  background: #5b5fef !important;
+  color: #fff !important;
+}
+
+.logout-btn {
+  background: #e63946;
+  color: #fff;
+}
+
+.logout-btn:hover {
+  background: #c62836;
+}
+
+/* ============================
+   HERO SECTION
+============================ */
+.hero {
+  text-align: center;
+  padding: 5rem 2rem;
+  background: linear-gradient(135deg, #5b5fef, #7a7fff);
+  color: white;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  margin-bottom: 2rem;
+}
+
+/* ============================
+   CTA BUTTONS
+============================ */
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* Primary button */
+.hero .primary-btn {
+  background: #ffffff !important;
+  color: #5b5fef !important;
+  padding: 0.9rem 1.8rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.25s ease;
+  border: none;
+}
+
+.hero .primary-btn:hover {
+  background: #eef0ff !important;
+  color: #4a4ed1 !important;
+}
+
+/* Secondary button */
+.hero .secondary-btn {
+  background: rgba(255, 255, 255, 0.2) !important;
+  color: white !important;
+  padding: 0.9rem 1.8rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  backdrop-filter: blur(4px);
+  transition: 0.25s ease;
+}
+
+.hero .secondary-btn:hover {
+  background: rgba(255, 255, 255, 0.35) !important;
+}
+
+/* ============================
+   RESPONSIVE
+============================ */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0 1rem;
+    flex-wrap: wrap;
+    height: auto;
+    gap: 0.5rem;
+  }
+
+  .search-wrapper {
+    order: 3;
+    width: 100%;
+    margin: 0.5rem 0;
+  }
+
+  app-search-bar {
+    max-width: 100%;
+  }
+
+  .nav-links {
+    gap: 0.6rem;
+    order: 2;
+  }
+
+  .nav-btn {
+    padding: 0.4rem 0.7rem;
+    font-size: 0.85rem;
+  }
+
+  .logo {
+    font-size: 1.3rem;
+    order: 1;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+  }
+}

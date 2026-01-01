@@ -1,0 +1,23 @@
+.admin-dashboard {
+  max-width: 600px;
+  margin: 40px auto;
+  text-align: center;
+}
+
+.admin-btn {
+  display: block;
+  width: 100%;
+  padding: 16px;
+  margin: 20px 0;
+  font-size: 18px;
+  border-radius: 8px;
+  border: none;
+  background: #333;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.admin-btn:hover {
+  background: #000;
+}

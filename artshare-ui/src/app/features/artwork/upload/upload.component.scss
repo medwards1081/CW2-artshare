@@ -1,0 +1,71 @@
+.upload-container {
+  max-width: 450px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .form-group {
+    margin-bottom: 16px;
+
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+    }
+  }
+
+  .preview {
+    margin: 20px 0;
+    text-align: center;
+
+    img {
+      max-width: 100%;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+    }
+  }
+
+  button {
+    width: 100%;
+    padding: 12px;
+    background: #4a6cf7;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+
+    &:disabled {
+      background: #9bb0ff;
+      cursor: not-allowed;
+    }
+  }
+
+  .error {
+    margin-top: 12px;
+    color: #d9534f;
+    text-align: center;
+  }
+
+  .success {
+    margin-top: 12px;
+    color: #28a745;
+    text-align: center;
+  }
+}

@@ -1,0 +1,70 @@
+<nav class="navbar">
+  <div class="logo">ArtShare</div>
+
+  <!-- ⭐ Global Search Bar -->
+  <div class="search-wrapper">
+    <app-search-bar (search)="onSearch($event)"></app-search-bar>
+  </div>
+
+  <div class="nav-links">
+
+    <!-- Core routes -->
+    <a routerLink="/artworks" routerLinkActive="active" class="nav-btn">Home</a>
+    <a routerLink="/artwork" routerLinkActive="active" class="nav-btn">Gallery</a>
+
+    <!-- Upload only when logged in -->
+    <a 
+      *ngIf="authService.snapshot.isAuthenticated"
+      routerLink="/upload" 
+      routerLinkActive="active" 
+      class="nav-btn">
+      Upload
+    </a>
+
+    <!-- Admin only when role = admin -->
+    <a 
+      *ngIf="authService.snapshot.role === 'admin'"
+      routerLink="/admin" 
+      routerLinkActive="active" 
+      class="nav-btn">
+      Admin
+    </a>
+
+    <!-- Login/Signup only when logged out -->
+    <a 
+      *ngIf="!authService.snapshot.isAuthenticated"
+      routerLink="/login" 
+      routerLinkActive="active" 
+      class="nav-btn">
+      Login
+    </a>
+
+    <a 
+      *ngIf="!authService.snapshot.isAuthenticated"
+      routerLink="/signup" 
+      routerLinkActive="active" 
+      class="nav-btn">
+      Signup
+    </a>
+
+    <!-- Profile only when logged in -->
+    <a 
+      *ngIf="authService.snapshot.isAuthenticated"
+      routerLink="/profile" 
+      routerLinkActive="active" 
+      class="nav-btn">
+      Profile
+    </a>
+
+    <!-- Logout button only when logged in -->
+    <button 
+      *ngIf="authService.snapshot.isAuthenticated"
+      class="nav-btn logout-btn"
+      (click)="logout()">
+      Logout
+    </button>
+
+  </div>
+</nav>
+
+<router-outlet></router-outlet>

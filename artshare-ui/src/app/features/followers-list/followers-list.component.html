@@ -1,0 +1,50 @@
+<div class="list-container">
+
+  <h2 class="title">Followers</h2>
+
+  <div *ngIf="loading" class="loading">Loading…</div>
+
+  <div *ngIf="!loading && followers.length === 0" class="empty">
+    <p>No followers yet.</p>
+  </div>
+
+  <div class="user-list" *ngIf="followers.length > 0">
+
+    <div 
+      class="user-card"
+      *ngFor="let user of followers"
+      [routerLink]="['/user', user.email]"
+    >
+
+      <!-- Avatar -->
+      <div class="avatar-wrapper">
+
+        <!-- Load avatar from localStorage -->
+        <img 
+          *ngIf="getAvatar(user.email)"
+          [src]="getAvatar(user.email)"
+          class="avatar-img"
+        />
+
+        <!-- Fallback avatar -->
+        <div 
+          *ngIf="!getAvatar(user.email)"
+          class="avatar-fallback"
+          [style.background]="getFallback(user.username).bg"
+        >
+          {{ getFallback(user.username).letter }}
+        </div>
+
+      </div>
+
+      <!-- Username + Email -->
+      <div class="info">
+        <p class="username">{{ user.username }}</p>
+        <p class="email">{{ user.email }}</p>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

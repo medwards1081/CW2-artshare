@@ -1,0 +1,412 @@
+.detail-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  color: #555;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: #000;
+  }
+}
+
+.detail-content {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+  }
+}
+
+/* ================================
+   ⭐ MEDIA SECTION (IMAGE / VIDEO / AUDIO / FILE)
+   ================================ */
+
+.image-section {
+  flex: 1;
+
+  img,
+  video {
+    width: 100%;
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+
+  audio {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .file-preview {
+    width: 100%;
+    padding: 30px;
+    border-radius: 12px;
+    background: #f3f3f3;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+
+    p {
+      font-size: 16px;
+      margin-bottom: 10px;
+      color: #444;
+    }
+
+    .download-btn {
+      display: inline-block;
+      padding: 10px 18px;
+      background: #333;
+      color: #fff;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: 0.2s ease;
+
+      &:hover {
+        background: #000;
+      }
+    }
+  }
+}
+
+/* ================================
+   ⭐ INFO SECTION
+   ================================ */
+
+.info-section {
+  flex: 1.2;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  .title {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .artist {
+    font-size: 18px;
+    color: #666;
+
+    .artist-link {
+      color: #333;
+      text-decoration: none;
+      font-weight: 600;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .description {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #444;
+  }
+
+  .meta {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #777;
+
+    p {
+      margin: 4px 0;
+    }
+  }
+
+  .likes-section {
+    margin: 15px 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .like-btn {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: 0.2s ease;
+
+    &:hover {
+      background: rgba(255, 0, 0, 0.1);
+    }
+  }
+
+  .likes-count {
+    font-size: 1rem;
+    opacity: 0.8;
+  }
+}
+
+/* ================================
+   ⭐ COMMENTS SECTION
+   ================================ */
+
+.comments-container {
+  margin-top: 40px;
+  padding: 20px;
+  background: #fafafa;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.comments-title {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+/* Tabs */
+.comments-tabs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+
+  .tab-btn {
+    padding: 8px 16px;
+    border: none;
+    background: #eaeaea;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s ease;
+    font-size: 14px;
+
+    &.active {
+      background: #333;
+      color: #fff;
+    }
+
+    &:hover:not(.active) {
+      background: #d5d5d5;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: default;
+    }
+  }
+}
+
+/* Add/Edit Comment Box */
+.comment-editor {
+  margin-bottom: 25px;
+
+  textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    resize: vertical;
+    font-size: 14px;
+    line-height: 1.4;
+    transition: border-color 0.2s ease;
+
+    &:focus {
+      border-color: #333;
+      outline: none;
+    }
+  }
+
+  .editor-actions {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+
+    .submit-btn {
+      padding: 8px 16px;
+      background: #333;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.2s ease;
+
+      &:hover {
+        background: #000;
+      }
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: default;
+      }
+    }
+
+    .cancel-btn {
+      padding: 8px 16px;
+      background: #ccc;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+
+      &:hover {
+        background: #b5b5b5;
+      }
+    }
+  }
+}
+
+/* Comment List */
+.comment-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  .comment-item {
+    padding: 15px;
+    background: #fff;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+
+    .comment-avatar {
+      width: 45px;
+      height: 45px;
+      min-width: 45px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+      background: #ddd;
+    }
+
+    .comment-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      display: block;
+    }
+
+    .comment-body {
+      flex: 1;
+    }
+
+    .comment-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 6px;
+
+      .comment-author {
+        font-weight: 600;
+        font-size: 15px;
+      }
+
+      .comment-date {
+        font-size: 12px;
+        color: #777;
+      }
+    }
+
+    .comment-text {
+      font-size: 14px;
+      line-height: 1.5;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .comment-actions {
+      display: flex;
+      gap: 10px;
+
+      .edit-btn,
+      .delete-btn {
+        background: none;
+        border: none;
+        font-size: 13px;
+        cursor: pointer;
+        padding: 4px 8px;
+        border-radius: 4px;
+        transition: 0.2s ease;
+      }
+
+      .edit-btn:hover {
+        background: rgba(0, 0, 255, 0.1);
+      }
+
+      .delete-btn {
+        color: #b00000;
+
+        &:hover {
+          background: rgba(255, 0, 0, 0.1);
+        }
+      }
+    }
+  }
+}
+
+/* Misc */
+.loading {
+  font-size: 14px;
+  color: #777;
+}
+
+.no-comments {
+  font-size: 14px;
+  color: #777;
+}
+
+.login-hint {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.audio-only {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0;
+
+  audio {
+    width: 80%;
+    max-width: 500px;
+  }
+}
+
+/* ---------------------- */
+/* ADMIN DELETE BUTTON    */
+/* ---------------------- */
+
+.admin-controls {
+  margin: 10px 0 20px 0;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.admin-delete-btn {
+  background: #d9534f; /* soft red */
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease;
+  font-size: 0.95rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+
+  &:hover {
+    background: #c9302c; /* darker red */
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
