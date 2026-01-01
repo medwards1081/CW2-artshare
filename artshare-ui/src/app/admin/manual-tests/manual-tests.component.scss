@@ -1,0 +1,104 @@
+:host {
+  display: block;
+  padding: 40px;
+}
+
+/* Page Title */
+h1 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #222;
+}
+
+/* Run Tests Button */
+.run-btn {
+  padding: 12px 22px;
+  background: #333;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 25px;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background 0.25s ease, transform 0.15s ease;
+
+  &:hover {
+    background: #000;
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+/* Test List Container */
+.test-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Individual Test Card */
+.test-list li {
+  background: #ffffff;
+  padding: 18px 20px;
+  margin-bottom: 14px;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 14px rgba(0,0,0,0.12);
+  }
+}
+
+/* Test Title */
+.test-list li strong {
+  font-size: 17px;
+  color: #222;
+}
+
+/* Result Badge */
+.result {
+  float: right;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  background: #e8f7e8;
+  color: #2e7d32;
+  border: 1px solid #c7e8c7;
+}
+
+/* Notes */
+.test-list li p {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #555;
+}
+
+.test-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.test-counts {
+  font-size: 15px;
+  font-weight: 600;
+  display: flex;
+  gap: 12px;
+}
+
+.passed {
+  color: #2e7d32;
+}
+
+.failed {
+  color: #c62828;
+}

@@ -15,8 +15,12 @@
     "@azure/cosmos": "^4.4.1",
     "@azure/functions": "^4.0.0",
     "@azure/storage-blob": "^12.27.0",
+    "axios": "^1.13.2",
     "bcryptjs": "^3.0.3",
+    "busboy": "^1.6.0",
+    "dotenv": "^17.2.3",
     "jsonwebtoken": "^9.0.3",
+    "ts-node": "^10.9.2",
     "uuid": "^8.3.2"
   },
   "devDependencies": {

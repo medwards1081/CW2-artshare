@@ -1,5 +1,8 @@
+/* ============================
+   HERO SECTION
+============================ */
 .hero {
-  background: linear-gradient(135deg, #0078d4, #005a9e);
+  background: linear-gradient(135deg, #5b5fef, #7a7fff); /* Purply-blue gradient */
   color: white;
   text-align: center;
   padding: 3rem 1rem;
@@ -20,36 +23,45 @@
   }
 }
 
+/* ============================
+   PRIMARY BUTTON (Purply-blue)
+============================ */
 .primary-btn {
-  background-color: #0078d4;
-  color: white;
+  background-color: #5b5fef !important; /* Purply-blue */
+  color: white !important;
   padding: 0.8rem 1.5rem;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
   font-weight: bold;
   transition: background-color 0.2s ease;
 
   &:hover {
-    background-color: #005a9e;
+    background-color: #4a4ed1 !important; /* Darker purply-blue */
   }
 }
 
+/* ============================
+   SECONDARY BUTTON
+============================ */
 .secondary-btn {
   background-color: #f3f3f3;
   color: #333;
   padding: 0.8rem 1.5rem;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
   margin-left: 1rem;
   transition: background-color 0.2s ease;
 
   &:hover {
-    background-color: #ddd;
+    background-color: #e6e6e6;
   }
 }
 
+/* ============================
+   ARTWORK GRID
+============================ */
 .artworks-grid {
   margin: 2rem;
   padding: 2rem;
@@ -59,6 +71,7 @@
   h2 {
     margin-bottom: 1rem;
     text-align: center;
+    color: #4a4ed1; /* Subtle purply-blue heading */
   }
 
   .masonry-grid {
@@ -75,20 +88,20 @@
     }
   }
 
-    .artwork-card {
-      background-color: #fff;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      overflow: hidden;
-      transition: transform 0.2s ease;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 250px; // fixed card height
+  .artwork-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 250px;
 
     img {
       width: 100%;
-      height: 180px; // fixed image height
+      height: 180px;
       object-fit: cover;
       border-bottom: 1px solid #eee;
     }
@@ -105,7 +118,6 @@
     }
   }
 
-  // Optional variants if you want tall/wide cards
   .artwork-card.tall img {
     height: 220px;
   }
@@ -115,6 +127,9 @@
   }
 }
 
+/* ============================
+   SIGNUP SECTION
+============================ */
 .signup-section {
   display: flex;
   justify-content: center;
@@ -162,18 +177,19 @@
       transition: border-color 0.2s;
 
       &:focus {
-        border-color: #0078d7;
+        border-color: #5b5fef; /* Purply-blue focus */
         outline: none;
       }
     }
   }
 
+  /* Signup button */
   .primary-btn {
     width: 100%;
     padding: 0.9rem;
     border: none;
     border-radius: 8px;
-    background: linear-gradient(135deg, #0078d7, #00aaff);
+    background: linear-gradient(135deg, #5b5fef, #7a7fff) !important;
     color: #fff;
     font-size: 1rem;
     font-weight: 600;
@@ -181,7 +197,7 @@
     transition: background 0.3s;
 
     &:hover {
-      background: linear-gradient(135deg, #005fa3, #008fcc);
+      background: linear-gradient(135deg, #4a4ed1, #6a6df0) !important;
     }
   }
 
@@ -191,7 +207,7 @@
     color: #555;
 
     a {
-      color: #0078d7;
+      color: #5b5fef;
       text-decoration: none;
       font-weight: 600;
 

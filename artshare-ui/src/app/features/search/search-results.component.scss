@@ -1,0 +1,107 @@
+/* Page Title */
+.page-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #222;
+}
+
+/* Loading text */
+.loading {
+  font-size: 1.2rem;
+  color: #666;
+  margin-top: 1rem;
+}
+
+/* Section wrapper */
+.section {
+  margin-bottom: 2.5rem;
+}
+
+.section-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #333;
+  border-left: 4px solid #6c63ff;
+  padding-left: 0.6rem;
+}
+
+/* Results list container */
+.results-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+/* Individual result item */
+.result-item {
+  background: #fafafa;
+  padding: 0.9rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.18s ease-in-out;
+  border: 1px solid #e5e5e5;
+
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    background: #f0f0ff;
+    border-color: #c7c4ff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.4);
+  }
+}
+
+/* Text inside each result */
+.result-text {
+  font-size: 1.05rem;
+  color: #333;
+}
+
+/* User-specific styling */
+.user-item {
+  border-left: 4px solid #6c63ff;
+}
+
+/* Artwork-specific styling */
+.artwork-item {
+  border-left: 4px solid #ff7b7b;
+}
+
+/* No results message */
+.no-results {
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  color: #777;
+  text-align: center;
+  padding: 2rem;
+  background: #f8f8f8;
+  border-radius: 8px;
+  border: 1px solid #e5e5e5;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .page-title {
+    font-size: 1.6rem;
+  }
+
+  .result-item {
+    padding: 0.8rem 1rem;
+  }
+
+  .result-text {
+    font-size: 1rem;
+  }
+}

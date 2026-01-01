@@ -1,0 +1,49 @@
+<h1 class="page-title">Search results for "{{ query }}"</h1>
+
+<div *ngIf="loading" class="loading">
+  Searching...
+</div>
+
+<!-- USERS -->
+<div *ngIf="!loading && users.length > 0" class="section">
+  <h2 class="section-title">Users</h2>
+
+  <div class="results-list">
+    <div
+      class="result-item user-item"
+      *ngFor="let user of users"
+      (click)="openUser(user)"
+      tabindex="0"
+    >
+      <div class="result-text">
+        <strong>{{ user.username }}</strong>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ARTWORKS -->
+<div *ngIf="!loading && artworks.length > 0" class="section">
+  <h2 class="section-title">Artworks</h2>
+
+  <div class="results-list">
+    <div
+      class="result-item artwork-item"
+      *ngFor="let art of artworks"
+      (click)="openArtwork(art)"
+      tabindex="0"
+    >
+      <div class="result-text">
+        {{ art.title }}
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NO RESULTS -->
+<div
+  *ngIf="!loading && users.length === 0 && artworks.length === 0"
+  class="no-results"
+>
+  No results found.
+</div>

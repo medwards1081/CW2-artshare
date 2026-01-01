@@ -18,6 +18,7 @@ export async function getProfile(request: HttpRequest, context: InvocationContex
 
         const email = decoded.email;
 
+        // Query user by email
         const query = {
             query: "SELECT * FROM c WHERE c.email = @email",
             parameters: [{ name: "@email", value: email }]
@@ -31,15 +32,28 @@ export async function getProfile(request: HttpRequest, context: InvocationContex
 
         const user = resources[0];
 
+        // ⭐ IMPORTANT:
+        // We no longer store profile images in the backend.
+        // Always return null so Angular uses localStorage instead.
+        const safeProfileImage = user.profileImageUrl && typeof user.profileImageUrl === "string"
+            ? user.profileImageUrl
+            : null;
+
         return {
             status: 200,
             jsonBody: {
                 id: user.id,
                 email: user.email,
                 username: user.username || user.email.split("@")[0],
-                profileImageUrl: user.profileImageUrl || "",
+                profileImageUrl: safeProfileImage,   // ⭐ Always safe
                 role: user.role,
-                createdAt: user.createdAt
+                createdAt: user.createdAt,
+
+                followers: user.followers || [],
+                following: user.following || [],
+
+                followersCount: user.followers?.length || 0,
+                followingCount: user.following?.length || 0
             }
         };
 
@@ -52,5 +66,6 @@ export async function getProfile(request: HttpRequest, context: InvocationContex
 app.http("getProfile", {
     methods: ["GET"],
     authLevel: "anonymous",
+    route: "getProfile",
     handler: getProfile
 });

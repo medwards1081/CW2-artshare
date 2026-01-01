@@ -1,0 +1,65 @@
+/* ============================
+   SEARCH BAR CONTAINER
+============================ */
+.search-bar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+/* ============================
+   INPUT FIELD
+============================ */
+input {
+  width: 100%;
+  padding: 0.55rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px 0 0 6px;
+  font-size: 0.95rem;
+  outline: none;
+  background: #ffffff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+  &:focus {
+    border-color: #5b5fef;
+    box-shadow: 0 0 0 3px rgba(91, 95, 239, 0.15);
+  }
+}
+
+/* ============================
+   SEARCH BUTTON
+============================ */
+button {
+  padding: 0.55rem 1rem;
+  background: #5b5fef;
+  color: white;
+  border: none;
+  border-radius: 0 6px 6px 0;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: background 0.2s ease;
+
+  &:hover {
+    background: #4a4ed1;
+  }
+
+  &:active {
+    background: #3d41b5;
+  }
+}
+
+/* ============================
+   RESPONSIVE
+============================ */
+@media (max-width: 768px) {
+  input {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.8rem;
+  }
+
+  button {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.8rem;
+  }
+}

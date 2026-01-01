@@ -1,0 +1,62 @@
+<div class="upload-container">
+  <h2>Upload File</h2>
+
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>Title</label>
+      <input type="text" [(ngModel)]="title" name="title" required />
+    </div>
+
+    <div class="form-group">
+      <label>Description</label>
+      <textarea [(ngModel)]="description" name="description" rows="3" required></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>Select File</label>
+      <input type="file" (change)="onFileSelected($event)" />
+    </div>
+
+    <!-- Preview Section -->
+    <div class="preview" *ngIf="fileBase64">
+      <p>Preview:</p>
+
+      <!-- Image Preview -->
+      <img
+        *ngIf="fileType?.startsWith('image/')"
+        [src]="fileBase64"
+        alt="Preview"
+      />
+
+      <!-- Video Preview -->
+      <video
+        *ngIf="fileType?.startsWith('video/')"
+        [src]="fileBase64"
+        controls
+      ></video>
+
+      <!-- Audio Preview -->
+      <audio
+        *ngIf="fileType?.startsWith('audio/')"
+        [src]="fileBase64"
+        controls
+      ></audio>
+
+      <!-- Generic File Preview -->
+      <p
+        *ngIf="!fileType?.startsWith('image/')
+            && !fileType?.startsWith('video/')
+            && !fileType?.startsWith('audio/')"
+      >
+        File selected: {{ fileName }}
+      </p>
+    </div>
+
+    <button type="submit" [disabled]="isUploading">
+      {{ isUploading ? 'Uploading...' : 'Upload' }}
+    </button>
+
+    <p class="error" *ngIf="uploadError">{{ uploadError }}</p>
+    <p class="success" *ngIf="uploadSuccess">{{ uploadSuccess }}</p>
+  </form>
+</div>

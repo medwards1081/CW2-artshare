@@ -1,1 +1,138 @@
-<p>profile works!</p>
+<div class="profile-container" *ngIf="profile">
+
+  <!-- Profile Header -->
+  <div class="profile-header">
+
+    <!-- ⭐ Avatar Wrapper (image OR fallback letter) -->
+    <div class="avatar-wrapper">
+
+      <!-- Real profile image -->
+      <img 
+        *ngIf="avatarUrl"
+        class="avatar-img"
+        [src]="avatarUrl"
+        alt="Profile Picture"
+      />
+
+      <!-- Fallback letter avatar -->
+      <div 
+        *ngIf="!avatarUrl"
+        class="avatar-fallback"
+        [style.background]="fallbackAvatar?.bg"
+      >
+        {{ fallbackAvatar?.letter }}
+      </div>
+
+    </div>
+
+    <div class="info">
+      <h2>{{ profile.username }}</h2>
+      <p class="join-date">Joined {{ profile.createdAt | date }}</p>
+      <button class="edit-btn" (click)="openEdit()">Edit Profile</button>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats">
+
+    <!-- Artworks (not clickable) -->
+    <div class="stat">
+      <span class="value">{{ artworks.length }}</span>
+      <span class="label">Artworks</span>
+    </div>
+
+    <!-- Followers -->
+    <div 
+      class="stat"
+      (click)="openFollowers()"
+    >
+      <span class="value">{{ followersCount }}</span>
+      <span class="label">Followers</span>
+    </div>
+
+    <!-- Following -->
+    <div 
+      class="stat"
+      (click)="openFollowing()"
+    >
+      <span class="value">{{ followingCount }}</span>
+      <span class="label">Following</span>
+    </div>
+
+  </div>
+
+  <!-- Section Title -->
+  <h3 class="section-title">Your Artwork</h3>
+
+  <!-- Loading State -->
+  <div class="loading" *ngIf="loadingArtworks">
+    Loading your artwork…
+  </div>
+
+  <!-- Empty State -->
+  <div class="empty" *ngIf="!loadingArtworks && artworks.length === 0">
+    <p>You haven’t uploaded any artwork yet.</p>
+    <button routerLink="/upload" class="upload-btn">Upload Your First Piece</button>
+  </div>
+
+  <!-- Artwork Grid -->
+  <div class="gallery-grid" *ngIf="!loadingArtworks && artworks.length > 0">
+    <div 
+      class="art-card" 
+      *ngFor="let art of artworks"
+      [routerLink]="['/artwork', art.id]"
+    >
+
+      <!-- ⭐ MEDIA WRAPPER (same logic as gallery) -->
+      <div class="thumb-wrapper">
+
+        <!-- IMAGE -->
+        <img
+          *ngIf="art.fileType && art.fileType.startsWith('image/')"
+          [src]="art.fileUrl"
+          [alt]="art.title"
+        />
+
+        <!-- VIDEO -->
+        <video
+          *ngIf="art.fileType && art.fileType.startsWith('video/')"
+          [src]="art.fileUrl"
+          muted
+        ></video>
+
+        <!-- AUDIO -->
+        <div 
+          *ngIf="art.fileType && art.fileType.startsWith('audio/')" 
+          class="audio-placeholder"
+        >
+          MP3
+        </div>
+
+        <!-- OTHER FILE TYPES -->
+        <div
+          *ngIf="art.fileType 
+              && !art.fileType.startsWith('image/')
+              && !art.fileType.startsWith('video/')
+              && !art.fileType.startsWith('audio/')"
+          class="file-placeholder"
+        >
+          FILE
+        </div>
+
+      </div>
+
+      <div class="art-info">
+        <h4 class="title">{{ art.title }}</h4>
+        <p class="artist">{{ art.artistUsername || 'Unknown Artist' }}</p>
+        <p class="date">{{ art.createdAt | date:'mediumDate' }}</p>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- Profile Loading State -->
+<div class="loading" *ngIf="loadingProfile && !profile">
+  Loading profile…
+</div>

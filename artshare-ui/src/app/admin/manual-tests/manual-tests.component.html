@@ -1,0 +1,18 @@
+<h1>Manual Test Suite</h1>
+
+<div class="test-header">
+  <button class="run-btn" (click)="runTests()">Run Tests</button>
+
+  <div class="test-counts">
+    <span class="passed">{{ passedCount }} Passed</span>
+    <span class="failed">{{ failedCount }} Failed</span>
+  </div>
+</div>
+
+<ul class="test-list">
+  <li *ngFor="let test of tests">
+    <strong>{{ test.title }}</strong>
+    <span class="result">{{ test.result }}</span>
+    <p>{{ test.notes }}</p>
+  </li>
+</ul>

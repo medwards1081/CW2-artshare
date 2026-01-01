@@ -1,37 +1,11 @@
-<div class="admin-container">
-  <mat-card class="admin-card">
-    <mat-card-header>
-      <mat-card-title>Admin Dashboard</mat-card-title>
-    </mat-card-header>
+<div class="admin-dashboard">
+  <h1>Admin Dashboard</h1>
 
-    <mat-card-content>
-      <div *ngFor="let post of posts" class="post-block">
-        <mat-card class="post-card">
-          <mat-card-title>{{ post.title }}</mat-card-title>
-          <mat-card-subtitle>by {{ post.author }}</mat-card-subtitle>
+  <button routerLink="/admin/users" class="admin-btn">
+    Manage Users
+  </button>
 
-          <mat-card-actions>
-            <button mat-raised-button color="warn" (click)="removePost(post.id)">
-              Remove Post
-            </button>
-          </mat-card-actions>
-
-          <mat-expansion-panel>
-            <mat-expansion-panel-header>
-              <mat-panel-title>Comments</mat-panel-title>
-            </mat-expansion-panel-header>
-
-            <mat-list>
-              <mat-list-item *ngFor="let comment of post.comments">
-                <span>{{ comment.text }} — <i>{{ comment.author }}</i></span>
-                <button mat-icon-button color="warn" (click)="removeComment(post.id, comment.id)">
-                  <mat-icon>delete</mat-icon>
-                </button>
-              </mat-list-item>
-            </mat-list>
-          </mat-expansion-panel>
-        </mat-card>
-      </div>
-    </mat-card-content>
-  </mat-card>
+  <button routerLink="/admin/tests" class="admin-btn">
+    Manual Test Suite
+  </button>
 </div>

@@ -1,24 +1,23 @@
-.admin-container {
-  display: flex;
-  justify-content: center;
-  padding: 2rem;
-  background: #f9f9f9;
+.admin-dashboard {
+  max-width: 600px;
+  margin: 40px auto;
+  text-align: center;
 }
 
-.admin-card {
-  width: 800px;
+.admin-btn {
+  display: block;
+  width: 100%;
+  padding: 16px;
+  margin: 20px 0;
+  font-size: 18px;
+  border-radius: 8px;
+  border: none;
+  background: #333;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s ease;
 }
 
-.post-block {
-  margin-bottom: 1rem;
-}
-
-.post-card {
-  padding: 1rem;
-}
-
-mat-list-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.admin-btn:hover {
+  background: #000;
 }

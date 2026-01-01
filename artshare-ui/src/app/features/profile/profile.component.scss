@@ -1,0 +1,203 @@
+.profile-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* ---------------------- */
+/* PROFILE HEADER         */
+/* ---------------------- */
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+
+  /* Ensure header stays above artwork grid */
+  position: relative;
+  z-index: 20;
+}
+
+/* Avatar wrapper */
+.avatar-wrapper {
+  width: 120px;
+  height: 120px;
+  position: relative;
+}
+
+/* Real image avatar */
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Fallback letter avatar */
+.avatar-fallback {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  font-weight: 600;
+  color: white;
+  text-transform: uppercase;
+}
+
+/* Profile info */
+.profile-header .info {
+  h2 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 600;
+  }
+
+  .join-date {
+    color: #666;
+    margin: 0.25rem 0 1rem;
+  }
+
+  .edit-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    background: #0078d4;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+
+    &:hover {
+      background: #005fa3;
+    }
+  }
+}
+
+/* ---------------------- */
+/* STATS                  */
+/* ---------------------- */
+
+.stats {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 2rem;
+
+  /* ⭐ Fix: ensure stats buttons stay clickable */
+  position: relative;
+  z-index: 30;
+  pointer-events: auto;
+
+  .stat {
+    text-align: center;
+    cursor: pointer;
+
+    .value {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .label {
+      color: #666;
+    }
+  }
+}
+
+/* ---------------------- */
+/* SECTION TITLE          */
+/* ---------------------- */
+
+.section-title {
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+
+  /* Keep above grid */
+  position: relative;
+  z-index: 20;
+}
+
+/* ---------------------- */
+/* ARTWORK GRID           */
+/* ---------------------- */
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+
+  /* ⭐ Ensure grid stays BELOW stats */
+  position: relative;
+  z-index: 1;
+
+  .art-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.03);
+    }
+
+    /* ⭐ MEDIA WRAPPER (same as gallery) */
+    .thumb-wrapper {
+      width: 100%;
+      height: 160px;
+      background: #f3f3f3;
+      border-radius: 8px 8px 0 0;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      img,
+      video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    /* ⭐ AUDIO + FILE PLACEHOLDERS */
+    .audio-placeholder,
+    .file-placeholder {
+      width: 100%;
+      height: 100%;
+      background: #dfe3e8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #333;
+      letter-spacing: 2px;
+    }
+
+    .art-info {
+      padding: 0.5rem;
+
+      .title {
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 600;
+      }
+
+      .artist {
+        margin: 0;
+        font-size: 0.85rem;
+        color: #666;
+      }
+
+      .date {
+        margin: 0.25rem 0 0;
+        font-size: 0.8rem;
+        color: #888;
+      }
+    }
+  }
+}
